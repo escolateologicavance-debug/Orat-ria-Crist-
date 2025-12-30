@@ -1,0 +1,12 @@
+{
+  "name": "Oratória AVANCE FTA",
+  "short_name": "Oratória",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#c5a059",
+  "icons": [
+    { "src": "logo-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "logo1-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

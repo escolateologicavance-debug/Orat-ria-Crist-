@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oratória Cristã - AVANCE FTA</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root { --dark: #050505; --gold: #c5a059; --white: #ffffff; --gray: #121212; }
+        body { font-family: 'Times New Roman', serif; margin: 0; background: var(--dark); color: var(--white); line-height: 1.8; }
+        
+        /* Capa / Splash */
+        #capa {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+        }
+        #capa h1 { font-size: 3em; margin: 10px 0; letter-spacing: 4px; font-weight: bold; }
+        #capa h2 { font-size: 1.4em; color: var(--gold); font-weight: 300; margin-bottom: 20px; }
+        .mic-trigger { 
+            font-size: 70px; cursor: pointer; transition: 0.5s; 
+            background: none; border: 2px solid var(--gold); border-radius: 50%; padding: 30px;
+            color: white; outline: none; margin: 30px 0;
+        }
+        .mic-trigger:hover { transform: scale(1.1); box-shadow: 0 0 40px var(--gold); }
+        .footer-copyright { position: absolute; bottom: 20px; font-size: 0.8em; opacity: 0.5; }
+
+        /* Estrutura de Conteúdo */
+        .content-wrapper { display: none; max-width: 900px; margin: auto; padding: 60px 25px; }
+        .modulo { background: var(--gray); padding: 45px; border-radius: 4px; margin-bottom: 50px; border-left: 5px solid var(--gold); box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
+        h3 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #222; padding-bottom: 15px; margin-bottom: 25px; }
+        p { text-align: justify; margin-bottom: 20px; font-size: 1.1em; }
+        
+        .scripture-box { background: #000; padding: 30px; border: 1px solid var(--gold); margin: 35px 0; font-style: italic; color: #eee; font-size: 1.2em; text-align: center; }
+        
+        /* Lista de Detalhes */
+        .detalhe-tecnico { margin-left: 20px; border-left: 1px solid #444; padding-left: 20px; margin-bottom: 30px; }
+        .detalhe-tecnico b { color: var(--gold); }
+
+        /* Prova */
+        .question-block { margin-bottom: 35px; padding: 25px; background: #080808; border: 1px solid #1a1a1a; }
+        .opt { display: block; margin: 15px 0; cursor: pointer; padding: 12px; border-radius: 4px; background: #111; }
+        .opt:hover { background: #1a1a1a; border-left: 3px solid var(--gold); }
+        .btn-action { background: var(--gold); color: black; border: none; padding: 20px; font-weight: bold; cursor: pointer; width: 100%; border-radius: 2px; font-size: 1.2em; text-transform: uppercase; }
+        
+        #feedback-area { margin-top: 30px; padding: 30px; display: none; background: #000; border: 1px solid var(--gold); text-align: center; }
+        input { width: 95%; padding: 15px; margin-bottom: 15px; background: #000; color: #fff; border: 1px solid #333; }
+    </style>
+</head>
+<body>
+
+<div id="capa">
+    <img src="logo1-512.png" alt="logo1-512.png" style="width: 130px;">
+    <h1>CURSO DE ORATÓRIA</h1>
+    <h2>Comunidade Persuasiva</h2>
+    <button class="mic-trigger" onclick="exibirIntro()">🎤</button>
+    <p>CLIQUE NO MICROFONE PARA INICIAR A ENGENHARIA DA COMUNICAÇÃO</p>
+    <img src="logo-192.png" alt="logo-192.png" style="width: 80px; margin-top: 20px;">
+    <div class="footer-copyright">c, AVANCE - FTA</div>
+</div>
+
+<div id="app" class="content-wrapper">
+    
+    <div id="intro-seca" class="modulo">
+        <h3>Módulo 1 — A Arte da Oratória</h3>
+        <p>Você não pode simplesmente falar. Você tem que envolver o seu auditório. Mas, antes de envolvê-lo... <strong>Você precisa se desenvolver!</strong></p>
+        <p>Isso é Oratória. Não adianta querer envolver na fala, se antes, você não desenvolveu os mecanismos dela. E isso não se consegue através de técnicas superficiais. Já ouviu falar da técnica de Oratória? Não é isso que vou te entregar neste curso. O que você está prestes a conhecer é a <strong>Engenharia da Comunicação</strong>.</p>
+        
+        <div class="scripture-box">
+            "O Senhor DEUS me deu uma língua erudita, para que eu saiba dizer boa palavra ao cansado. Ele me desperta todas as manhãs; desperta o meu ouvido para que eu ouça como aqueles que aprendem." <br>
+            <small>— Isaías 50:4</small>
+        </div>
+
+        <p>Esse Curso vai ajudar a desenvolver você, para você envolver seu público! Você não é só um orador(a), palestrante, paraninfo(a) ou quem está no pedestal. Você é um <strong>comunicador(a). Um desenvolvedor de opiniões.</strong> Não é apenas quem informa. Você é quem provoca através da sua fala.</p>
+        <button class="btn-action" onclick="liberarCurso()">ACESSAR CONTEÚDO</button>
+    </div>
+
+    <div id="curso-completo" style="display:none;">
+        
+        <div class="modulo">
+            <h3>Módulo 2 — Desenvolvimento da Postura</h3>
+            <p>A Postura do Orador é a primeira Comunicação ao auditório. É a comunicação não verbal, que fala tanto ou mais que a comunicação audível. Antes da primeira sílaba, o auditório já o "leu".</p>
+            <div class="detalhe-tecnico">
+                <p><b>Como se vestir:</b> O traje é um código de autoridade. Deve ser condizente com o público (o traje do clero no altar, o terno no tribuno). Regras de etiqueta exigem que você nunca chame mais atenção pela roupa do que pela mensagem.</p>
+                <p><b>A Base Corporal:</b> Pernas excessivamente abertas transmitem arrogância, dominação agressiva ou desleixo. Pernas muito fechadas sugerem fragilidade e medo. O peso deve estar distribuído, transmitindo estabilidade.</p>
+                <p><b>Vícios de Gestos:</b> Ajustar óculos, mexer no cabelo, mãos nos bolsos ou esconder as mãos. Mãos visíveis são historicamente sinal de transparência e ausência de armas (engano). Vícios drenam a energia do argumento e distraem o foco do ouvinte.</p>
+            </div>
+        </div>
+
+        <div class="modulo">
+            <h3>Módulo 3 — Desenvolvimento da Respiração</h3>
+            <p>Sem ar não há voz; sem controle de ar não há autoridade. A respiração correta é a <strong>Diafragmática</strong> (abdominal), permitindo sustentar frases longas sem arquejar ou perder o volume final.</p>
+            [attachment_0](attachment)
+            <div class="detalhe-tecnico">
+                <p><b>Higiene Vocal:</b> Cuidado com as amígdalas e hidratação constante. O orador profissional trata sua voz como um instrumento. O aquecimento vocal é obrigatório.</p>
+                <p><b>Treinamento com Caneta:</b> Colocar uma caneta entre os dentes e ler em voz alta força a articulação muscular, destrava a língua e garante uma dicção cristalina.</p>
+                <p><b>Tom e Timbre:</b> Baixo demais é ininteligível; alto demais é irritante. O timbre deve ser explorado para criar nuances. O microfone não é um apoio; ele deve ser usado com distância estratégica (evitando o "pop" de ar nas plosivas) e nunca deve esconder o rosto do orador.</p>
+            </div>
+        </div>
+
+        <div class="modulo">
+            <h3>Módulo 4 — Dicção e Conteúdo Persuasivo</h3>
+            <p>Tão importante quanto falar é: o que falar. <strong>Rui Barbosa</strong>, o Águia de Haia, utilizava a precisão vocabular não para ser difícil, mas para ser cirúrgico na persuasão. Sua estratégia consistia em cercar o oponente com lógica e ética inabaláveis.</p>
+            <div class="detalhe-tecnico">
+                <p><b>Paulo diante de Agripa (Atos 26):</b> Uma aula de retórica. Paulo usa o exórdio (elogio inicial) para ganhar o ouvido do rei e, em seguida, desfia uma defesa lógica que quase o converte.</p>
+                <p><b>O Mensageiro de Davi (2 Samuel 1):</b> O amalequita tentou administrar a notícia da morte de Saul com mentiras oportunistas, acreditando que agradaria Davi. A comunicação mal administrada e baseada no engano custou sua própria execução. O orador deve ser escravo da verdade.</p>
+            </div>
+        </div>
+
+        <div class="modulo">
+            <h3>Módulo 5 — A Engenharia da Comunicação</h3>
+            <p>O produto principal da Oratória é a transformação. <strong>Oratória Persuasiva</strong> constrói pontes; <strong>Oratória Vexatória</strong> constrói vergonha. Vícios de linguagem, apelidos e o uso de diminutivos retiram a "gravitas" (peso) da sua autoridade.</p>
+            <p>Gafes, argumentos infundados ou falta de domínio do tema são imperdoáveis para quem sobe ao pedestal. Grandes nomes como <strong>Sócrates</strong> (com sua maiêutica) e <strong>Martin Luther King Jr.</strong> (com sua cadência rítmica e profética) não apenas falavam; eles moviam sociedades inteiras.</p>
+        </div>
+
+        <div class="modulo">
+            <h3>Módulo 6 — As Rédeas da Comunicação</h3>
+            <p>Domine a Comunicação ou desista de falar em público. <strong>Herodes o Grande</strong> e os <strong>Tribunos de Roma</strong> sabiam que a palavra era a maior ferramenta de governo. A persuasão exige domínio emocional e técnico sobre as rédeas do discurso.</p>
+            
+            <div class="detalhe-tecnico" style="border-top: 1px solid #333; padding-top: 20px;">
+                <p><b>Gilberto Moreira:</b> Escritor, Missionário e Educador. Desenvolveu a Engenharia da Comunicação e ferramentas de coerência (Calculadora MC e SC). Professor de Hebraico e Teologia. Desenvolvedor dos ecossistemas digitais AVANCE - FTA.</p>
+            </div>
+        </div>
+
+        <div class="modulo">
+            <h3>AVALIAÇÃO DE PROFICIÊNCIA (20 QUESTÕES)</h3>
+            <form id="provaForm">
+                <input type="text" id="nome" placeholder="Nome Completo" required>
+                <input type="email" id="email" placeholder="seu-gmail@gmail.com" required>
+                <div id="questoesArea"></div>
+                <button type="button" class="btn-action" onclick="corrigir()">FINALIZAR E ENVIAR RESULTADOS</button>
+            </form>
+            <div id="feedback-area"></div>
+            <button id="btnPDF" class="btn-action" style="display:none; margin-top:20px; background:#27ae60;" onclick="gerarCertificado()">GERAR CERTIFICADO PDF</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const questoes = [
+        { q: "Qual a diferença entre técnica de oratória e a 'Engenharia da Comunicação' proposta?", opts: ["Técnica é para o corpo, engenharia é para o som", "Engenharia foca no desenvolvimento do ser para envolver o outro", "Não há diferença"], a: 1 },
+        { q: "O que a postura de pernas excessivamente abertas transmite ao auditório?", opts: ["Segurança e firmeza", "Agressividade, dominação ou falta de refinamento", "Insegurança extrema"], a: 1 },
+        { q: "Por que mãos visíveis são fundamentais no pedestal?", opts: ["Para mostrar beleza", "Sinal histórico de transparência e ausência de engano/armas", "Para gesticular mais rápido"], a: 1 },
+        { q: "Sobre vestimenta, qual a regra de ouro do orador?", opts: ["Usar as cores mais vibrantes possíveis", "O traje deve validar a mensagem e nunca distrair o público do orador", "Seguir apenas a moda"], a: 1 },
+        { q: "A respiração correta para sustentar a fala é:", opts: ["Torácica superior", "Diafragmática (Abdominal)", "Clavicular"], a: 1 },
+        { q: "Qual o objetivo do exercício com a caneta entre os dentes?", opts: ["Aumentar o fôlego", "Forçar a musculatura para uma dicção impecável", "Limpar as amígdalas"], a: 1 },
+        { q: "O que caracteriza a Oratória Vexatória?", opts: ["Uso de gírias, apelidos e diminutivos que infantilizam o tema", "Uso de citações latinas", "Fala em volume baixo"], a: 0 },
+        { q: "A quem Rui Barbosa se dirigia em sua famosa oratória citada?", opts: ["Aos Juízes de Haia", "Aos Moços", "Aos Reis"], a: 1 },
+        { q: "O exemplo de Paulo diante de Agripa ilustra:", opts: ["A importância da agressividade verbal", "O uso da lógica, cortesia e estratégia persuasiva", "A falta de preparo"], a: 1 },
+        { q: "O mensageiro de Davi (2 Samuel 1) falhou porque:", opts: ["Chegou atrasado", "Administrou a comunicação baseada em mentira oportunista", "Não sabia falar hebraico"], a: 1 },
+        { q: "O tom de voz irritante é definido como:", opts: ["Baixo e ininteligível", "Alto demais e sem modulação nuances", "Equilibrado"], a: 1 },
+        { q: "Isaías 50:4 afirma que a 'língua erudita' serve para:", opts: ["Vencer debates difíceis", "Dizer boa palavra ao cansado", "Escrever leis"], a: 1 },
+        { q: "O microfone deve ser posicionado de forma a:", opts: ["Ficar colado aos lábios", "Nunca esconder o rosto do orador", "Sempre cobrir a boca"], a: 1 },
+        { q: "O que Herodes o Grande e os Tribunos Romanos dominavam?", opts: ["A escrita poética", "As rédeas da comunicação persuasiva", "Apenas a força militar"], a: 1 },
+        { q: "Sobre o vício de mexer no cabelo ou óculos, o que isso causa?", opts: ["Charme adicional", "Drenagem da atenção do público e perda de autoridade", "Concentração"], a: 1 },
+        { q: "A Oratória Persuasiva visa prioritariamente:", opts: ["Construir pontes e envolver o auditório", "Apenas informar fatos secos", "Confundir o oponente"], a: 0 },
+        { q: "O timbre de voz ininteligível é aquele que é:", opts: ["Grave demais", "Baixo demais e sem articulação", "Muito rápido"], a: 1 },
+        { q: "A Engenharia da Comunicação substitui a busca pelo 'SER' pela:", opts: ["Busca pelo ter", "Qualificação do Estar", "Busca pela fama"], a: 1 },
+        { q: "Sócrates utilizava qual método para provocar o auditório?", opts: ["Monólogo longo", "Maiêutica (perguntas)", "Gritos"], a: 1 },
+        { q: "O exórdio em uma fala (como a de Paulo em Atos 26) serve para:", opts: ["Finalizar o discurso de forma abrupta", "Ganhar a atenção e a benevolência do ouvido", "Ofender a inteligência do oponente"], a: 1 }
+
+    ];
+
+    function exibirIntro() { document.getElementById('capa').style.display='none'; document.getElementById('app').style.display='block'; }
+    function liberarCurso() { document.getElementById('intro-seca').style.display='none'; document.getElementById('curso-completo').style.display='block'; window.scrollTo(0,0); renderQuestoes(); }
+
+    function renderQuestoes() {
+        const area = document.getElementById('questoesArea');
+        questoes.forEach((item, i) => {
+            let html = `<div class="question-block"><p><strong>${i+1}. ${item.q}</strong></p>`;
+            item.opts.forEach((o, idx) => { html += `<label class="opt"><input type="radio" name="q${i}" value="${idx}"> ${o}</label>`; });
+            html += `</div>`;
+            area.innerHTML += html;
+        });
+    }
+
+    function corrigir() {
+        let nota = 0;
+        questoes.forEach((item, i) => {
+            const r = document.querySelector(`input[name="q${i}"]:checked`);
+            if (r && parseInt(r.value) === item.a) nota++;
+        });
+        const final = (nota/questoes.length)*10;
+        const feedback = document.getElementById('feedback-area');
+        feedback.style.display = 'block';
+        if (final >= 7) {
+            feedback.innerHTML = `<h2 style="color:green">APROVADO - NOTA: ${final.toFixed(1)}</h2><p>Dados enviados para coordenação.</p>`;
+            document.getElementById('btnPDF').style.display = 'block';
+        } else {
+            feedback.innerHTML = `<h2 style="color:red">NOTA: ${final.toFixed(1)} - REPROVADO</h2><p>Refaça o teste.</p>`;
+        }
+    }
+
+    function gerarCertificado() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('l', 'mm', 'a4');
+        const nome = document.getElementById('nome').value || "Aluno";
+        const data = new Date().toLocaleDateString('pt-BR');
+        doc.setFillColor(20); doc.rect(0, 0, 297, 210, 'F');
+        doc.setDrawColor(197, 160, 89); doc.setLineWidth(5); doc.rect(10, 10, 277, 190);
+        doc.setTextColor(197, 160, 89); doc.setFontSize(35); doc.text("CERTIFICADO DE PROFICIÊNCIA", 148, 60, {align: "center"});
+        doc.setTextColor(255); doc.setFontSize(20); doc.text("Concedido a", 148, 90, {align: "center"});
+        doc.setFontSize(30); doc.text(nome.toUpperCase(), 148, 115, {align: "center"});
+        doc.setFontSize(16); doc.text("Concluiu com êxito e aproveitamento comprovado do Curso de Oratória", 148, 145, {align: "center"});
+        doc.setFontSize(14); doc.text(`Itanhangá-MT, ${data}`, 148, 175, {align: "center"});
+        doc.save(`Certificado_Oratoria_${nome}.pdf`);
+    }
+</script>
+</body>
+</html>
