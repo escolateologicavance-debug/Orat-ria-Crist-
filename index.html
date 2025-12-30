@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c5a059">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oratória Cristã - AVANCE FTA</title>
@@ -209,6 +211,9 @@
         doc.setFontSize(14); doc.text(`Itanhangá-MT, ${data}`, 148, 175, {align: "center"});
         doc.save(`Certificado_Oratoria_${nome}.pdf`);
     }
+    if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
 </body>
 </html>
